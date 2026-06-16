@@ -125,60 +125,44 @@ int main()
     }
 
     // Ranking
-    cout << "\n---------------------------------\n";
-    cout << "     RANKING DOS APOSTADORES\n";
-    cout << "---------------------------------\n";
+   // Ranking
 
-    if (pontos1 >= pontos2 && pontos1 >= pontos3 && pontos1 >= pontos4)
+string nomes[4] = {nome1, nome2, nome3, nome4};
+int pontos[4] = {pontos1, pontos2, pontos3, pontos4};
+
+// Ordenação do maior para o menor
+for (int i = 0; i < 4; i++)
+{
+    for (int j = i + 1; j < 4; j++)
     {
-        cout << "1º Lugar: " << nome1 << " - " << pontos1 << " pontos\n";
-
-        if (pontos2 >= pontos3 && pontos2 >= pontos4)
+        if (pontos[j] > pontos[i])
         {
-            cout << "2º Lugar: " << nome2 << " - " << pontos2 << " pontos\n";
+            // Troca os pontos
+            int auxPontos = pontos[i];
+            pontos[i] = pontos[j];
+            pontos[j] = auxPontos;
 
-            if (pontos3 >= pontos4)
-            {
-                cout << "3º Lugar: " << nome3 << " - " << pontos3 << " pontos\n";
-                cout << "4º Lugar: " << nome4 << " - " << pontos4 << " pontos\n";
-            }
-            else
-            {
-                cout << "3º Lugar: " << nome4 << " - " << pontos4 << " pontos\n";
-                cout << "4º Lugar: " << nome3 << " - " << pontos3 << " pontos\n";
-            }
-        }
-        else if (pontos3 >= pontos2 && pontos3 >= pontos4)
-        {
-            cout << "2º Lugar: " << nome3 << " - " << pontos3 << " pontos\n";
-
-            if (pontos2 >= pontos4)
-            {
-                cout << "3º Lugar: " << nome2 << " - " << pontos2 << " pontos\n";
-                cout << "4º Lugar: " << nome4 << " - " << pontos4 << " pontos\n";
-            }
-            else
-            {
-                cout << "3º Lugar: " << nome4 << " - " << pontos4 << " pontos\n";
-                cout << "4º Lugar: " << nome2 << " - " << pontos2 << " pontos\n";
-            }
-        }
-        else
-        {
-            cout << "2º Lugar: " << nome4 << " - " << pontos4 << " pontos\n";
-
-            if (pontos2 >= pontos3)
-            {
-                cout << "3º Lugar: " << nome2 << " - " << pontos2 << " pontos\n";
-                cout << "4º Lugar: " << nome3 << " - " << pontos3 << " pontos\n";
-            }
-            else
-            {
-                cout << "3º Lugar: " << nome3 << " - " << pontos3 << " pontos\n";
-                cout << "4º Lugar: " << nome2 << " - " << pontos2 << " pontos\n";
-            }
+            // Troca os nomes
+            string auxNome = nomes[i];
+            nomes[i] = nomes[j];
+            nomes[j] = auxNome;
         }
     }
+}
 
-    return 0;
+cout << "\n---------------------------------\n";
+cout << "     RANKING DOS APOSTADORES\n";
+cout << "---------------------------------\n";
+
+for (int i = 0; i < 4; i++)
+{
+    cout << i + 1 << "º Lugar: "
+         << nomes[i]
+         << " - "
+         << pontos[i]
+         << " pontos"
+         << endl;
+}
+
+return 0;
 }
