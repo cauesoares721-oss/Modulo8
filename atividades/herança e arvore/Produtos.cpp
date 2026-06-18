@@ -1,3 +1,4 @@
+#include <windows.h>
 #include <iostream>
 #include <string>
 
@@ -21,7 +22,6 @@ public:
     }
 };
 
-// Subclasse Livro
 class Livro : public Produto {
 private:
     string autor;
@@ -37,7 +37,6 @@ public:
     }
 };
 
-// Subclasse Eletronico
 class Eletronico : public Produto {
 private:
     string marca;
@@ -55,20 +54,21 @@ public:
 
 int main() {
 
-    // Objetos da classe Livro
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
     Livro livro1("Dom Casmurro", 45.90, "Machado de Assis");
     Livro livro2("O Pequeno Principe", 30.00, "Antoine de Saint-Exupery");
 
-    // Objetos da classe Eletronico
+    
     Eletronico eletronico1("Notebook", 3500.00, "Dell");
     Eletronico eletronico2("Celular", 2500.00, "Samsung");
 
-    cout << "=== Livros ===" << endl;
+    cout << " Livros" << endl;
     livro1.mostrarLivro();
     cout << endl;
     livro2.mostrarLivro();
 
-    cout << "\n=== Eletronicos ===" << endl;
+    cout << "\nEletronicos" << endl;
     eletronico1.mostrarEletronico();
     cout << endl;
     eletronico2.mostrarEletronico();
